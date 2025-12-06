@@ -3,8 +3,7 @@
 
 ### 🔗 Interactive Dashboards (Tableau Public)
 
-View the full interactive dashboard collection here:
-👉 [INSERT YOUR TABLEAU PUBLIC LINK]
+View the full interactive dashboard collection [here](https://public.tableau.com/views/SaaSCustomerChurnAnalyticsABTesting/SaaSCustomerChurnAnalyticsExperimentEvaluation?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
 ### 📌 Project Overview
 
