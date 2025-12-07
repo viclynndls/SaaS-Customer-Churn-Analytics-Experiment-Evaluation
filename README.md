@@ -99,11 +99,11 @@ SHAP was used to explain model decisions globally and for individual users.
 
 #### Global Feature Importance (SHAP Bar Plot)
 
-Replace the placeholder path with your actual image file.
 
 ![SHAP Global Feature Importance](python/plots/SHAP_Bar_Summary_Plot.png)
 
 SHAP Beeswarm Plot (Feature Influence & Distribution)
+
 ![SHAP Beeswarm Summary](plots/shap_beeswarm.png)
 
 
