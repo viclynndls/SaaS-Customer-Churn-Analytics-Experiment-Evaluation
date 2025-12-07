@@ -1,0 +1,169 @@
+table_name,column_name,data_type,description
+USERS_RAW,USER_ID,STRING,Unique identifier for each user
+USERS_RAW,SIGNUP_DATE,STRING,Original signup date as text (parsed later to DATE)
+USERS_RAW,COUNTRY,STRING,User country name
+USERS_RAW,AGE,STRING,User age as text
+USERS_RAW,GENDER,STRING,Self-reported gender
+USERS_RAW,PLAN_TYPE,STRING,Subscription plan at signup (basic/free/premium)
+USERS_RAW,ACQUISITION_CHANNEL,STRING,Acquisition source
+USERS_RAW,PRIMARY_DEVICE,STRING,Primary device used by the customer
+,,,
+SUBSCRIPTIONS_RAW,SUBSCRIPTION_ID,STRING,Unique identifier for each subscription record
+SUBSCRIPTIONS_RAW,USER_ID,STRING,Unique identifier for each user
+SUBSCRIPTIONS_RAW,START_DATE,STRING,Subscription start date as text
+SUBSCRIPTIONS_RAW,END_DATE,STRING,Subscription end date as text
+SUBSCRIPTIONS_RAW,BILLING_PERIOD,STRING,Billing frequency
+SUBSCRIPTIONS_RAW,PRICE_USD,STRING,Subscription price in USD as text
+SUBSCRIPTIONS_RAW,IS_ACTIVE,BOOLEAN,Flag indicating whether subscription is active
+,,,
+EVENTS_RAW,EVENT_ID,STRING,Unique identifier for each event
+EVENTS_RAW,USER_ID,STRING,Unique identifier for each user
+EVENTS_RAW,EVENT_TIME,STRING,Event timestamp as text
+EVENTS_RAW,EVENT_TYPE,STRING,Type of event
+EVENTS_RAW,SESSION_ID,STRING,Identifier for the session containing this event
+EVENTS_RAW,DEVICE_TYPE,STRING,Device type for the event
+EVENTS_RAW,PLATFORM,STRING,Platform for the event
+,,,
+SURVEY_RESPONSES_RAW,RESPONSE_ID,STRING,Unique identifier for each survey response
+SURVEY_RESPONSES_RAW,USER_ID,STRING,Unique identifier for each user
+SURVEY_RESPONSES_RAW,RESPONSE_DATE,STRING,Survey response date as text
+SURVEY_RESPONSES_RAW,NPS_SCORE,STRING,NPS score (0-10) as text
+SURVEY_RESPONSES_RAW,CSAT_SCORE,STRING,Original CSAT rating (0-5) as text
+SURVEY_RESPONSES_RAW,EASE_OF_USE,STRING,Survey rating of ease of use as text
+SURVEY_RESPONSES_RAW,COMMENT_TEXT,STRING,Free-text survey comment
+,,,
+EXPERIMENT_ASSIGNMENTS_RAW,EXP_ASSIGNMENT_ID,STRING,Unique identifier for experiment assignment
+EXPERIMENT_ASSIGNMENTS_RAW,USER_ID,STRING,Unique identifier for each user
+EXPERIMENT_ASSIGNMENTS_RAW,EXPERIMENT_NAME,STRING,Name of the experiment
+EXPERIMENT_ASSIGNMENTS_RAW,VARIANT,STRING,Assigned variant (control/treatment)
+EXPERIMENT_ASSIGNMENTS_RAW,ASSIGNMENT_DATE,STRING,Assignment date as text
+,,,
+DIM_USERS,USER_ID,STRING,Unique user identifier
+DIM_USERS,SIGNUP_DATE,DATE,Parsed signup date
+DIM_USERS,COUNTRY,STRING,Standardized country
+DIM_USERS,AGE,NUMBER,Age or numeric age bucket
+DIM_USERS,GENDER,STRING,Standardized gender category
+DIM_USERS,PLAN_TYPE,STRING,Current plan type
+DIM_USERS,ACQUISITION_CHANNEL,STRING,Standardized acquisition channel
+DIM_USERS,PRIMARY_DEVICE,STRING,Standardized primary device
+DIM_USERS,SIGNUP_MONTH,DATE,First day of the calendar month in which the user signed up
+DIM_USERS,AGE_BUCKET,STRING,Categorical age grouping
+,,,
+FACT_SUBSCRIPTIONS_CLEAN,SUBSCRIPTION_ID,STRING,Unique subscription identifier
+FACT_SUBSCRIPTIONS_CLEAN,USER_ID,STRING,Unique identifier for each user
+FACT_SUBSCRIPTIONS_CLEAN,START_DATE,DATE,Subscription start date
+FACT_SUBSCRIPTIONS_CLEAN,END_DATE,DATE,Subscription end date
+FACT_SUBSCRIPTIONS_CLEAN,DURATION_DAYS,NUMBER,Total number of days between subscription start and end dates
+FACT_SUBSCRIPTIONS_CLEAN,BILLING_PERIOD,STRING,Standardized billing period
+FACT_SUBSCRIPTIONS_CLEAN,PRICE_USD,NUMBER,Cleaned numeric subscription price
+FACT_SUBSCRIPTIONS_CLEAN,IS_ACTIVE,BOOLEAN,True if subscription active as of reference date
+FACT_SUBSCRIPTIONS_CLEAN,IS_PRICE_VALID,BOOLEAN,Flag for valid/non-anomalous price
+FACT_SUBSCRIPTIONS_CLEAN,IS_KNOWN_USER,BOOLEAN,Flag for users tracked in DIM_USERS
+FACT_SUBSCRIPTIONS_CLEAN,IS_DURATION_VALID_CLEAN,BOOLEAN,Flag for valid subscription duration
+,,,
+FACT_EVENTS,EVENT_ID,STRING,Unique event identifier
+FACT_EVENTS,USER_ID,STRING,Unique identifier for each user
+FACT_EVENTS,EVENT_TIMESTAMP,TIMESTAMP,Event timestamp
+FACT_EVENTS,EVENT_DATE,DATE,Event calendar date
+FACT_EVENTS,EVENT_TYPE,STRING,Standardized event type
+FACT_EVENTS,SESSION_ID,STRING,Session identifier
+FACT_EVENTS,DEVICE_TYPE,STRING,Standardized device type
+FACT_EVENTS,PLATFORM,STRING,Standardized platform
+FACT_EVENTS,IS_KNOWN_USER,NUMBER,Flag for users tracked in DIM_USERS
+FACT_EVENTS,IS_ENGAGEMENT_EVENT,NUMBER,Flag if event counts as engagement
+,,,
+FACT_SURVEY_RESPONSES,RESPONSE_ID,STRING,Unique survey response identifier
+FACT_SURVEY_RESPONSES,USER_ID,STRING,Unique identifier for each user
+FACT_SURVEY_RESPONSES,RESPONSE_DATE,DATE,Survey response date
+FACT_SURVEY_RESPONSES,NPS_SCORE,NUMBER,NPS rating (0-10)
+FACT_SURVEY_RESPONSES,NPS_CATEGORY,STRING,Promoter/Passive/Detractor category
+FACT_SURVEY_RESPONSES,CSAT_SCORE,NUMBER,CSAT normalized to 0-10 scale
+FACT_SURVEY_RESPONSES,CSAT_CATEGORY,STRING,Categorized CSAT score
+FACT_SURVEY_RESPONSES,EASE_OF_USE,STRING,Ease-of-use rating
+FACT_SURVEY_RESPONSES,COMMENT_TEXT,STRING,Survey free-text
+FACT_SURVEY_RESPONSES,COMMENT_TEXT_CLEAN,STRING,"Cleaned version of comment text with HTML removed, extra whitespace trimmed, and invalid characters filtered"
+FACT_SURVEY_RESPONSES,HAS_URL,BOOLEAN,Flag indicating whether the survey comment contains any URL patterns
+FACT_SURVEY_RESPONSES,HAS_HTML,BOOLEAN,Flag indicating whether the raw comment text contains HTML tags or markup
+FACT_SURVEY_RESPONSES,IS_KNOWN_USER,BOOLEAN,Flag for users tracked in DIM_USERS
+FACT_SURVEY_RESPONSES,CSAT_SCORE_0_TO_10,NUMBER,CSAT score transformed to a 0–10 numeric scale
+FACT_SURVEY_RESPONSES,HAS_MEANINGFUL_COMMENT,NUMBER,Flag if comment length considered meaningful
+,,,
+FACT_EXPERIMENT_ASSIGNMENTS,EXP_ASSIGNMENT_ID,STRING,Unique experiment assignment identifier
+FACT_EXPERIMENT_ASSIGNMENTS,USER_ID,STRING,Unique identifier for each user
+FACT_EXPERIMENT_ASSIGNMENTS,EXPERIMENT_NAME,STRING,Experiment name
+FACT_EXPERIMENT_ASSIGNMENTS,ASSIGNMENT_DATE,DATE,Date user was assigned
+FACT_EXPERIMENT_ASSIGNMENTS,VARIANT,STRING,Variant label (control/treatment)
+FACT_EXPERIMENT_ASSIGNMENTS,IS_KNOWN_USER,BOOLEAN,Flag for users tracked in DIM_USERS
+FACT_EXPERIMENT_ASSIGNMENTS,IS_TREATMENT,NUMBER,1 if treatment  0 if control
+,,,
+USER_EVENTS_AGG,USER_ID,STRING,User identifier
+USER_EVENTS_AGG,TOTAL_EVENTS,NUMBER,Total events across all time
+USER_EVENTS_AGG,ACTIVE_DAYS,NUMBER,Number of distinct days with at least one event
+USER_EVENTS_AGG,ENGAGEMENT_EVENTS,NUMBER,Count of engagement-flagged events
+USER_EVENTS_AGG,FIRST_EVENT_DATE,DATE,First recorded event date
+USER_EVENTS_AGG,LAST_EVENT_DATE,DATE,Most recent event date
+USER_EVENTS_AGG,EVENTS_LAST_30D,NUMBER,Events in last 30 days before reference date
+USER_EVENTS_AGG,EVENTS_LAST_7D,NUMBER,Events in last 7 days before reference date
+,,,
+USER_SUBSCRIPTION_AGG,USER_ID,STRING,User identifier
+USER_SUBSCRIPTION_AGG,NUM_SUBSCRIPTIONS,NUMBER,Total number of subscription records
+USER_SUBSCRIPTION_AGG,TOTAL_REVENUE,NUMBER,Total subscription revenue in USD
+USER_SUBSCRIPTION_AGG,LAST_SUB_START,DATE,Start date of the most recent subscription
+USER_SUBSCRIPTION_AGG,LAST_SUB_END,DATE,End date of the most recent subscription
+USER_SUBSCRIPTION_AGG,HAS_ACTIVE_SUB,NUMBER,1 if user has at least one active subscription
+,,,
+USER_SURVEY_AGG,USER_ID,STRING,User identifier
+USER_SURVEY_AGG,NUM_SURVEYS,NUMBER,Total number of survey responses
+USER_SURVEY_AGG,AVG_NPS_SCORE,NUMBER,Average NPS score per user
+USER_SURVEY_AGG,AVG_CSAT_0_TO_10,NUMBER,Average CSAT on 0-10 scale
+USER_SURVEY_AGG,PCT_PROMOTER,NUMBER,Share of responses categorized as promoter
+USER_SURVEY_AGG,PCT_DETRACTOR,NUMBER,Share of responses categorized as detractor
+USER_SURVEY_AGG,PCT_WITH_MEANINGFUL_COMMENT,NUMBER,Share of responses with meaningful comment
+USER_SURVEY_AGG,LAST_SURVEY_DATE,DATE,Most recent survey date
+,,,
+USER_EXPERIMENT_AGG,USER_ID,STRING,User identifier
+USER_EXPERIMENT_AGG,EXPERIMENT_NAME,STRING,Experiment name
+USER_EXPERIMENT_AGG,LAST_ASSIGNMENT_DATE,DATE,Most recent assignment date
+USER_EXPERIMENT_AGG,VARIANT,STRING,Assigned variant (control/treatment)
+USER_EXPERIMENT_AGG,IS_TREATMENT,NUMBER,1 if assigned to treatment
+,,,
+USER_CHURN_LABEL,USER_ID,STRING,User identifier
+USER_CHURN_LABEL,LAST_EVENT_DATE,DATE,Last observed event date
+USER_CHURN_LABEL,LAST_SUB_END,DATE,Last subscription end date
+USER_CHURN_LABEL,DAYS_SINCE_LAST_EVENT,NUMBER,Days between last event and reference date
+USER_CHURN_LABEL,CHURNED_AS_OF_REF_DATE,NUMBER,1 if classified as churned as of reference date
+,,,
+FTR_CHURN,USER_ID,STRING,User identifier (primary key for modeling row)
+FTR_CHURN,SIGNUP_DATE,DATE,Parsed signup date
+FTR_CHURN,SIGNUP_MONTH,DATE,First day of the calendar month in which the user signed up
+FTR_CHURN,COUNTRY,STRING,User country
+FTR_CHURN,AGE,NUMBER,User age 
+FTR_CHURN,AGE_BUCKET,STRING,Categorical age grouping
+FTR_CHURN,GENDER,STRING,Standardized gender category
+FTR_CHURN,PLAN_TYPE,STRING,User's plan type
+FTR_CHURN,TOTAL_EVENTS,NUMBER,Total events across all time
+FTR_CHURN,ACTIVE_DAYS,NUMBER,Total distinct active days
+FTR_CHURN,ENGAGEMENT_EVENTS,NUMBER,Total engagement events
+FTR_CHURN,FIRST_EVENT_DATE,DATE,First recorded event date
+FTR_CHURN,LAST_EVENT_DATE,DATE,Most recent event date
+FTR_CHURN,EVENTS_LAST_30D,NUMBER,Events in last 30 days
+FTR_CHURN,EVENTS_LAST_7D,NUMBER,Events in last 7 days
+FTR_CHURN,NUM_SUBSCRIPTIONS,NUMBER,Number of subscriptions per user
+FTR_CHURN,TOTAL_REVENUE,NUMBER,Total subscription revenue per user
+FTR_CHURN,LAST_SUB_START,DATE,Start date of the most recent subscription
+FTR_CHURN,LAST_SUB_END,DATE,Last subscription end date
+FTR_CHURN,HAS_ACTIVE_SUB,NUMBER,1 if user has an active subscription
+FTR_CHURN,NUM_SURVEYS,NUMBER,Total survey responses
+FTR_CHURN,NO_SURVEY_FLAG,NUMBER,Indicator feature (1/0) signifying whether the user has no survey responses on record
+FTR_CHURN,AVG_NPS_SCORE,NUMBER,Average NPS score
+FTR_CHURN,AVG_CSAT_0_TO_10,NUMBER,Average CSAT score (0-10)
+FTR_CHURN,PCT_PROMOTER,NUMBER,Share of responses marked as promoter
+FTR_CHURN,PCT_DETRACTOR,NUMBER,Share of responses marked as detractor
+FTR_CHURN,PCT_WITH_MEANINGFUL_COMMENT,NUMBER,Share of responses with meaningful comments
+FTR_CHURN,LAST_SURVEY_DATE,DATE,Most recent survey date
+FTR_CHURN,EXPERIMENT_VARIANT,STRING,Assigned variant (control/treatment)
+FTR_CHURN,IS_TREATMENT,NUMBER,1 if user is in treatment group
+FTR_CHURN,LABEL_LAST_EVENT_DATE,DATE,Event date used specifically for churn label calculation
+FTR_CHURN,LABEL_LAST_SUB_END,DATE,Subscription end date used in churn labeling logic
+FTR_CHURN,DAYS_SINCE_LAST_EVENT,NUMBER,Days since last event at reference date
+FTR_CHURN,CHURNED,NUMBER,"Final churn label used for modeling (1 = churned, 0 = retained)"
