@@ -114,6 +114,7 @@ SHAP Beeswarm Plot (Feature Influence & Distribution)
 - Active subscription status strongly reduces churn probability
 
 #### SHAP Dependence Plot (Days Since Last Event × Subscriptions)
+
 ![SHAP Dependence Plot](python/plots/SHAP_Dependence_Plot.png)
 
 **Insight:**
