@@ -170,6 +170,7 @@ Planned enhancements include:
 |   |   ├── users.csv
 |   |   ├── survey_responses.csv
 |   |   ├── subscriptions.csv
+|   |   ├── events.zip (CSV was too large)
 |   |   └── experiment_assignments.csv
 │   ├── final/
 |   |   └── FTR Churn Export.csv
