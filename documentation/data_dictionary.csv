@@ -85,7 +85,7 @@ FACT_SURVEY_RESPONSES,COMMENT_TEXT_CLEAN,STRING,"Cleaned version of comment text
 FACT_SURVEY_RESPONSES,HAS_URL,BOOLEAN,Flag indicating whether the survey comment contains any URL patterns
 FACT_SURVEY_RESPONSES,HAS_HTML,BOOLEAN,Flag indicating whether the raw comment text contains HTML tags or markup
 FACT_SURVEY_RESPONSES,IS_KNOWN_USER,BOOLEAN,Flag for users tracked in DIM_USERS
-FACT_SURVEY_RESPONSES,CSAT_SCORE_0_TO_10,NUMBER,CSAT score transformed to a 0–10 numeric scale
+FACT_SURVEY_RESPONSES,CSAT_SCORE_0_TO_10,NUMBER,CSAT score transformed to a 0â€“10 numeric scale
 FACT_SURVEY_RESPONSES,HAS_MEANINGFUL_COMMENT,NUMBER,Flag if comment length considered meaningful
 ,,,
 FACT_EXPERIMENT_ASSIGNMENTS,EXP_ASSIGNMENT_ID,STRING,Unique experiment assignment identifier
