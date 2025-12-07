@@ -156,6 +156,7 @@ Planned enhancements include:
 - Behavioral segmentation using clustering techniques (k-means, GMM)
 
 ### 📁 Repository Structure
+```
 .
 ├── data/
 │   ├── raw/
@@ -182,7 +183,7 @@ Planned enhancements include:
 │   ├── shap_beeswarm.png
 │   └── shap_dependence.png
 └── README.md
-
+```
 ### 📬 Contact
 
 Victoria De Los Santos
