@@ -5,6 +5,7 @@
 
 View the full interactive dashboard collection [here](https://public.tableau.com/views/SaaSCustomerChurnAnalyticsABTesting/SaaSCustomerChurnAnalyticsExperimentEvaluation?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 
+---
 ### 📌 Project Overview
 
 This project simulates a complete analytics workflow for a SaaS company using synthetic but realistic data. It covers every stage of the data science lifecycle—from data generation and warehousing, through SQL feature engineering, to predictive modeling and interactive dashboards.
