@@ -104,7 +104,7 @@ SHAP was used to explain model decisions globally and for individual users.
 
 SHAP Beeswarm Plot (Feature Influence & Distribution)
 
-![SHAP Beeswarm Summary](plots/shap_beeswarm.png)
+![SHAP Beeswarm Summary](python/plots/SHAP_Summary_Plot.png)
 
 
 **Interpretation:**
