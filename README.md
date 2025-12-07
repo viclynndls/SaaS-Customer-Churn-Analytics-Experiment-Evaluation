@@ -211,6 +211,9 @@ Planned enhancements include:
 │   ├── Experiment Summary.png
 │   └── Conclusions and Recommendations.png
 ├── documentation/
+│   ├── architecture_diagram.md
+│   ├── data_dictionary.csv
+│   └── methodology.md
 └── README.md
 ```
 ### 📬 Contact
