@@ -51,6 +51,11 @@ RAW  →  TRANSFORM  →  ANALYTICS (Star Schema)  →  FTR_CHURN (Modeling)
 - FACT_SUBSCRIPTIONS
 - FACT_SURVEYS
 - FACT_EXPERIMENT_ASSIGNMENTS
+- USER_CHURN_LABEL
+- USER_EVENTS_AGG
+- USER_EXPERIMENT_AGG
+- USER_SUBSCRIPTION_AGG
+- USER_SURVEY_AGG
 
 #### Final Modeling Table
 
@@ -163,28 +168,50 @@ Planned enhancements include:
 |   |   ├── users.csv
 |   |   ├── survey_responses.csv
 |   |   ├── subscriptions.csv
-|   |   ├── experiment_assignments.csv
+|   |   └── experiment_assignments.csv
 │   ├── final/
-|   |   ├── FTR_Churn_Export.csv
+|   |   └── FTR Churn Export.csv
 ├── python/
-│   ├── Generating_datasets.py
+│   └── Generating Datasets.py
 │   ├── model/
-|   |   ├── Snowflake_Load_Machine_Learning_Models_and_SHAP_Analysis.py
+|   |   └── Snowflake Load, Machine Learning Models, and SHAP Analysis.py
 │   ├── plots/
-|   |   ├── Feature_Importance_Plot_Random_Forest.png
-|   |   ├── SHAP_Bar_Summary_Plot.png
-|   |   ├── SHAP_Dependence_Plot.png
-|   |   ├── SHAP_Summary_Plot.png
-├── python/
-
+|   |   ├── Feature Importance Plot (Random Forest).png
+|   |   ├── SHAP Bar Summary Plot.png
+|   |   ├── SHAP Dependence Plot.png
+|   |   └── SHAP Summary Plot.png
+├── sql/
+│   └── Warehouse, Schema, and Table Generation.sql
+│   ├── transform/
+|   |   ├── STG_EVENTS Generation.sql
+|   |   ├── STG_USERS Gernation.sql
+|   |   ├── STG_SURVEYS Generation.sql
+|   |   ├── STG_SUBSCRIPTIONS Generation.sql
+|   |   └── STG_EXPERIMENT_ASSIGNMENTS Generation.sql
+│   ├── analytics/
+|   |   ├── DIM_USERS Generation.sql
+|   |   ├── FACT_EVENTS Gernation.sql
+|   |   ├── FACT_SURVEY_RESPONSES Generation.sql
+|   |   ├── FACT_SUBSCRIPTIONS_CLEAN Generation.sql
+|   |   ├── FACT_EXPERIMENT_ASSIGNMENTS Generation.sql
+|   |   ├── USER_CHURN_LABEL Generation.sql
+|   |   ├── USER_EVENTS_AGG Gernation.sql
+|   |   ├── USER_EXPERIMENT_AGG Generation.sql
+|   |   ├── USER_SUBSCRIPTION_AGG Generation.sql
+|   |   ├── USER_SURVEY_AGG Generation.sql
+|   |   ├── FTR_CHURN Generation.sql
+|   |   └── Sanity Checks.sql
 ├── dashboards/
-│   ├── rf_feature_importance.png
-│   ├── shap_bar.png
-│   ├── shap_beeswarm.png
-│   └── shap_dependence.png
+│   ├── Introductory Overview Page.png
+│   ├── Customer Churn Overview.png
+│   ├── Churn Drivers & Behavioral Insights.png
+│   ├── Satisfaction & Segment Insights.png
+│   ├── Experiment Summary.png
+│   └── Conclusions and Recommendations.png
+├── documentation/
 └── README.md
 ```
 ### 📬 Contact
 
 Victoria De Los Santos
-🔗 LinkedIn: [Insert link]
+🔗 [LinkedIn](www.linkedin.com/in/victoriadls)
